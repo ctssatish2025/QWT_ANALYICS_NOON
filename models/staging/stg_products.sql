@@ -1,4 +1,4 @@
 {{ config(materialized = 'table')}}
  
 select * from
-{{source('raw_qwt','raw_products')}}
+{{source('raw_qwt','RAW_PRODUCTS')}}

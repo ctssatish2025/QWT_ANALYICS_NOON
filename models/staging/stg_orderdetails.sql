@@ -1,8 +1,8 @@
-{{ config(materialized = 'incremental', unique_key= ['OrderID']) }}
+{{ config(materialized = 'incremental', unique_key = ['orderid','lineno']) }}
  
 select ord_dtl.*,ord.orderdate from
-{{source('raw_qwt','raw_order_details')}} as ord_dtl join
-{{source('raw_qwt','raw_orders')}} as ord
+{{source('raw_qwt','RAW_ORDER_DETAILS')}} as ord_dtl join
+{{source('raw_qwt','RAW_ORDERS')}} as ord
 on ord_dtl.OrderID=ord.OrderID
  
  
@@ -10,4 +10,4 @@ on ord_dtl.OrderID=ord.OrderID
  
 where orderdate > (select max(orderdate) from {{this}} )
  
-{% endif %}
+{% endif %} 

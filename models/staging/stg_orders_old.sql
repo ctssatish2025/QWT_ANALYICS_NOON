@@ -1,7 +1,7 @@
 {{ config(materialized = 'incremental', unique_key= ['OrderID']) }}
  
 select * from
-{{source('raw_qwt','raw_orders')}}
+{{source('raw_qwt','RAW_ORDERS')}}
  
 {% if is_incremental() %}
  
